@@ -1,0 +1,57 @@
+<RedstoneDisplay>
+    canvas.before:
+        Color:
+            rgb: 227/255, 101/255, 11/255
+        Rectangle:
+            size: self.size
+
+<MainLayout>:
+    RedstoneDisplay:
+        size_hint:1,1
+    Button:
+        pos_hint:{"x":.01,"top":.98}
+        size_hint:None,.07
+        width:self.height
+        background:[0,0,0,0]
+        on_release:root.on_draw_request()
+        Image:
+            source: "exo_ic_chevron_right.png"
+            size_hint:None,None
+            size:self.parent.size
+            pos:self.parent.pos
+    NavigrationDrawer
+        id:nav_drawer
+        size_hint:None,1
+        width:dp(150)
+        pos:-self.size[0],0
+    
+
+
+
+<NavigrationDrawer@BoxLayout>
+    canvas.before:
+        Color:
+            rgb: .4,.4,.6
+        Rectangle:
+            size: self.size
+            pos:self.pos
+        Color:
+            rgb: 1,1,1
+        Line:
+            width: 1.1
+            rectangle: self.x, self.y, self.width, self.height
+    orientation:"vertical"
+    Label:
+        size_hint:1,None
+        height:dp(40)
+    BoxLayout:
+        size_hint:.95,None
+        height:dp(40)
+        Label:
+            text: "Shape"
+        Button:
+            text:"cuboid"
+            id:shape_button
+            on_release:root.parent.drop_down.open(self)
+    Label:
+        text:""
